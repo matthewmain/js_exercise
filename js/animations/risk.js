@@ -21,10 +21,12 @@ var bounceLoss = 0.9;  // (proportion of previous velocity after bouncing)
 var skidLoss = 0.9;  // (proportion of previous velocity if touching the ground)
 var expOrig = { x: 150, y: 190 };  // explosion origin
 var expInt = 8;  // explosion intensity (as velocity in svg units)
-var isExploded = false;
 var explosionDelay = 300;
 var assemblyDelay = 300;
 var reasSpd = 3;  // reassemble speed (as svg units per iteration)
+
+//trackers
+var isExploded = false;
 var iterationsSinceLastExplosion = 0;
 var iterationsSinceLastAssembly = 0;
 
@@ -40,7 +42,7 @@ var skins = [];
 
 ///---SHAPES---///
 
-//svg home points (form broken triangle icon, clockwise from top)
+//svg home points (forms broken triangle icon, clockwise from top)
 let spT1 =  { x: 150,     y: 111.97 };  // svg point tip 1
 let spE1a = { x: 167.88,  y: 143.12 };  // svg point edge 1a
 let spE1b = { x: 177.5,   y: 159.89 };  // svg point edge 1b
@@ -254,22 +256,22 @@ function detectWalls() {
     //right wall
     if (p.cx > envWidth - pr - pd) { 
       p.cx = envWidth - pr - pd;  // move point back to wall
-      p.px = p.cx + xv * bounceLoss;  // reverse velocity
+      p.px = p.cx + xv * bounceLoss;  // reverse x velocity
     }
     //left wall
     if (p.cx < 0 + pr + pd) {
-      p.cx = 0 + pr + pd;
-      p.px = p.cx + xv * bounceLoss;
+      p.cx = 0 + pr + pd;  // move point back to wall
+      p.px = p.cx + xv * bounceLoss;  // reverse x velocity
     }
     //floor
     if (p.cy > envHeight - pr ) {
-      p.cy = envHeight - pr;
-      p.py = p.cy + yv * bounceLoss;
+      p.cy = envHeight - pr;  // move point back to wall
+      p.py = p.cy + yv * bounceLoss;  // reverse y velocity
     }
     //ceiling
     if (p.cy < 0 + pr + pr) {
-      p.cy = pr + pr;
-      p.py = p.cy + yv * bounceLoss;
+      p.cy = pr + pr;  // move point back to wall
+      p.py = p.cy + yv * bounceLoss;  // reverse y velocity
     }
   }
 }
