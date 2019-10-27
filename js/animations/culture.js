@@ -117,11 +117,11 @@ var currentFrameC = 0;  // current frame (culture icon)
 //runs animation (culture icon)
 function runAnimationC() {
   animationActiveC = true;
-	currentFrameC++;
-	if ( currentFrameC <= durationInFramesC ) {
-		window.requestAnimationFrame( ()=> { 
-			//outer hexagon twist-morphs into inner hexagon
-			so1.x = AJS.easeOutQuint( po1.x, pi1.x, durationInFramesC, currentFrameC );
+  currentFrameC++;
+  if ( currentFrameC <= durationInFramesC ) {
+    window.requestAnimationFrame( ()=> { 
+      //outer hexagon twist-morphs into inner hexagon
+      so1.x = AJS.easeOutQuint( po1.x, pi1.x, durationInFramesC, currentFrameC );
       so1.y = AJS.easeOutQuint( po1.y, pi1.y, durationInFramesC, currentFrameC );
       so2.x = AJS.easeOutQuint( po2.x, pi2.x, durationInFramesC, currentFrameC );
       so2.y = AJS.easeOutQuint( po2.y, pi2.y, durationInFramesC, currentFrameC );
@@ -133,8 +133,8 @@ function runAnimationC() {
       so5.y = AJS.easeOutQuint( po5.y, pi5.y, durationInFramesC, currentFrameC );
       so6.x = AJS.easeOutQuint( po6.x, pi6.x, durationInFramesC, currentFrameC );
       so6.y = AJS.easeOutQuint( po6.y, pi6.y, durationInFramesC, currentFrameC );
-			//inner hexagon twist-morphs into outer hexagon
-			si1.x = AJS.easeOutQuint( pi1.x, po2.x, durationInFramesC, currentFrameC );
+      //inner hexagon twist-morphs into outer hexagon
+      si1.x = AJS.easeOutQuint( pi1.x, po2.x, durationInFramesC, currentFrameC );
       si1.y = AJS.easeOutQuint( pi1.y, po2.y, durationInFramesC, currentFrameC );
       si2.x = AJS.easeOutQuint( pi2.x, po3.x, durationInFramesC, currentFrameC );
       si2.y = AJS.easeOutQuint( pi2.y, po3.y, durationInFramesC, currentFrameC );
@@ -149,16 +149,16 @@ function runAnimationC() {
       //update svg
       placeOuterHexagon();
       placeInnerHexagon();
-			//recursion
-			runAnimationC();
-		});
-	} else {
-		currentFrameC = 0;
-		animationActiveC = false;
+      //recursion
+      runAnimationC();
+    });
+  } else {
+    currentFrameC = 0;
+    animationActiveC = false;
     resetOuterHexagon();
     resetInnerHexagon();
     runAnimationC();
-	}
+  }
 }
 
 
