@@ -8,7 +8,7 @@ var innerCircle = document.getElementById("ethics-icon-circle-inner");
 var middleCircle = document.getElementById("ethics-icon-circle-middle");
 var outerCircle = document.getElementById("ethics-icon-circle-outer");
 
-swellPct = "130%";  // swell percent of base size
+var swellPct = "130%";  // swell percent of base size
 var dur = 2.5;  // animation segment duration
 var rd = 3;  // repeat delay
 
